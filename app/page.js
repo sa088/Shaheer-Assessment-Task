@@ -1,7 +1,12 @@
+import Users from "./components/Users/Users";
+
 
 export default function Home() {
-  
+
   return (
-    <h1>My Next.js App</h1>
+    <>
+      <h1>Show Fetched Users</h1>
+      <Users />
+    </>
   );
 }
