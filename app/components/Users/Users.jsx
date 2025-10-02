@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Users = () => {
 
-    const [users, setUsers] = useState();
+    const [data, setData] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,7 +14,7 @@ const Users = () => {
                     throw new Error("Error getting response")
                 }
                 const result = await response.json();
-                setUsers(result);
+                setData(result);
                 console.log("result", result);
 
             } catch (error) {
@@ -25,11 +25,18 @@ const Users = () => {
         fetchData();
     }, []);
 
+    console.log("data", data);
+
+
     return (
         <div>
-            {/* {users.map((item, index) => (
-
-            ))} */}
+            {data?.map((item, index) => (
+                <div key={index} className="my-4">
+                    <p>{item?.id}</p>
+                    <h2>Name: {item.name}</h2>
+                    <h3>Email: {item.email}</h3>
+                </div>
+            ))}
         </div>
     )
 }
